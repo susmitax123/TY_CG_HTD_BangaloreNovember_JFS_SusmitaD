@@ -1,0 +1,5 @@
+package com.capgemini.forestryapp.dao;
+
+public class LandDAOImpl {
+
+}

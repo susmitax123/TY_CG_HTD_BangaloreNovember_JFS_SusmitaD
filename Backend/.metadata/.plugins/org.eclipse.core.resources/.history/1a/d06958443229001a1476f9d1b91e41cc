@@ -1,0 +1,49 @@
+package com.capgemini.forestryapp;
+
+import java.util.Scanner;
+
+public class Home {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+
+		System.out.println("WELCOME TO FORESTERY MANAGMENT");
+		System.out.println();
+		System.out.println("HOME");
+		System.out.println();
+		System.out.println("1.Login as a ADMIN ");
+		System.out.println();
+		System.out.println("2.Login as a CLIENT ");
+		System.out.println("3.Login as SCHEDULER ");
+		int options=sc.nextInt();
+		switch (options) {
+		case 1:
+			while(true) {
+					
+				System.out.println("Enter your UserName");
+				String userName = sc.next();
+				System.out.println("Enter password");
+				String password = sc.next();
+				if(userName.contentEquals("Susmita")  && password.contentEquals("qwerty1")) {
+					
+					Admin admin = new Admin();
+				}else {
+					System.err.println("Enter valid username and password please!");
+				}
+			}
+			//break;
+
+		case 2:
+			Contract c1=new Contract();
+			c1.getClass();
+			break;
+			
+		case 3:
+			
+			break;
+		default:
+			System.err.println("Please choose between the above numbers only!");
+			break;
+		}
+	}
+}

@@ -1,0 +1,119 @@
+package com.capgemini.jdbcproject.dao;
+
+import java.io.FileReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
+import com.capgemini.jdbcproject.bean.Contractor;
+import com.capgemini.jdbcproject.bean.Customer;
+
+public class CustomerDAOImpl implements CustomerDAO {
+
+	FileReader reader;
+	Properties prop;
+	Customer customer;
+
+	public CustomerDAOImpl() {
+		try {
+			reader = new FileReader("db.properties");
+			prop = new Properties();
+			prop.load(reader);
+			Class.forName(prop.getProperty("driverClass"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public List<Customer> getAllCustomer() {
+		List<Customer> list = new ArrayList<Customer>();
+		try(Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"),
+				prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(prop.getProperty("query1"))
+						){
+			while(rs.next()) {
+				customer = new Customer();
+				customer.setCid(rs.getInt(1));
+				customer.setName(rs.getString(2));
+				customer.setTown(rs.getString(3));
+				customer.setPostal(rs.getInt(4));
+				customer.setEmail(rs.getString(5));
+				customer.setPhone(rs.getLong(6));
+				
+				list.add(customer);
+			}
+			return list;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean deleteCustomer(int cid) {
+		try(Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"),
+				prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("deleteQuery1"))
+						){
+			pstmt.setInt(1, cid);
+			int count = pstmt.executeUpdate();
+			
+			if(count > 0) {
+				return true;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean addCustomer(Customer customer) {
+		try(Connection conn = DriverManager.getConnection(prop.getProperty("dbUrl"),
+				prop.getProperty("dbUser"),prop.getProperty("dbPassword"));
+				PreparedStatement pstmt = conn.prepareStatement(prop.getProperty("insertQuery1"))
+						){
+	pstmt.setInt(1, customer.getCid());
+	pstmt.setString(2, customer.getName());
+	pstmt.setString(3, customer.getTown());
+	pstmt.setInt(4, customer.getPostal());
+	pstmt.setString(5, customer.getEmail());
+	pstmt.setLong(6, customer.getPhone());
+
+	
+	int count = pstmt.executeUpdate();
+	
+	if(count > 0) {
+		return true;
+	}
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		return false;
+	}
+	@Override
+	public boolean updateCustomer(Customer cust) {
+	boolean update = false;
+	
+	for (Customer customer : customer ) {
+		if(customer.getCid() == cust.getCid()) {
+			customer.setCid(cust.getCid());
+			customer.setEmail(cust.getEmail());
+			customer.setName(cust.getEmail());
+			customer.setPhone(cust.getPhone());
+			customer.setPostal(cust.getPostal());
+			customer.setTown(cust.getTown());
+		 update = true;
+		}
+		
+	}
+		return update;
+	}
+
+}

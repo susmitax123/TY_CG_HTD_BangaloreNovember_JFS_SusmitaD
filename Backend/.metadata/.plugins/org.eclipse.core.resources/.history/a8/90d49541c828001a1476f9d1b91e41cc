@@ -1,0 +1,11 @@
+package com.capgemini.forestryapp;
+
+import java.util.Scanner;
+
+public class Admin {
+	
+public Admin() {
+	// TODO Auto-generated constructor stub
+Contract contractor = new Contract(); 	
+}
+}

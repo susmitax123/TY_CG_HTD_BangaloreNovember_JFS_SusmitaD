@@ -1,0 +1,14 @@
+package com.capgemini.forestryapp;
+
+import java.util.Scanner;
+
+public class Admin {
+	/*public Admin() {
+		
+	}*/
+	
+	
+	Scanner sc = new Scanner(System.in);
+	
+
+}

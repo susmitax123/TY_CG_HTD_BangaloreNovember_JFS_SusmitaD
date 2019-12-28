@@ -1,0 +1,5 @@
+package com.capgemini.jdbcproject.controller;
+
+public class ContractorApp {
+
+}

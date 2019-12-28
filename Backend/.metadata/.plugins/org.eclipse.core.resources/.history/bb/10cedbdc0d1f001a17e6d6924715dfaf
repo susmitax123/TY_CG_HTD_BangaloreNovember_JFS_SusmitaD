@@ -1,0 +1,29 @@
+package com.capgemini.jdbcproject.services;
+
+import java.util.List;
+
+import com.capgemini.forestryjdbcproject.factory.ContractorFactory;
+import com.capgemini.jdbcproject.bean.Contractor;
+import com.capgemini.jdbcproject.dao.ContractorDAO;
+
+public class ContractorServiceImpl implements ContractorService {
+ ContractorDAO dao = ContractorFactory.instanceOfContractorDAOImpl(); 
+	@Override
+	public List<Contractor> getAllContarctor() {
+		
+		return dao.getAllContarctor();
+	}
+
+	@Override
+	public boolean deletecontarctor(int cid) {
+		// TODO Auto-generated method stub
+		return dao.deletecontarctor(cid);
+	}
+
+	@Override
+	public boolean addContarctor(Contractor contractor) {
+		// TODO Auto-generated method stub
+		return dao.addContarctor(contractor);
+	}
+
+}

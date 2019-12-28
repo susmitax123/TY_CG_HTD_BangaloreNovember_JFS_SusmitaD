@@ -1,0 +1,51 @@
+package com.capgemini.forestryapp.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.capgemini.forestryapp.dto.CustomerBean;
+
+public class CustomerDAOImpl implements CustomerDAO {
+
+	private List<CustomerBean> customerBeans = new ArrayList<CustomerBean>();
+
+	@Override
+	public boolean insertCustomer(CustomerBean bean) {
+		for (CustomerBean customerBean : customerBeans) {
+			if(customerBean.getCid() == bean.getCid()) {
+				return false;
+			}
+		}
+		customerBeans.add(bean);
+		return true;
+	}
+
+
+
+	@Override
+	public boolean deleteCustomer(int customerId) {
+		for (CustomerBean customerBean : customerBeans) {
+			if((customerBean.getCid())==customerId){
+				customerBeans.remove(customerBean);
+				return true;
+			}else {
+				System.err.println("Ooopssomething went wrong..");
+				
+			}
+			
+		}
+		return false;
+	
+		
+	}
+
+
+	@Override
+	public List<CustomerBean> getAllCustomer() {
+		if(customerBeans.isEmpty()) {
+			return new ArrayList<CustomerBean>();
+		}
+		return customerBeans;
+	}
+	
+}

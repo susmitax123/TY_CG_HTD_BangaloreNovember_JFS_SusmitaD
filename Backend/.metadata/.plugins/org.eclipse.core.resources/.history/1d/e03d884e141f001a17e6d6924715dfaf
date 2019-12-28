@@ -1,0 +1,15 @@
+package com.capgemini.jdbcproject.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.forestryjdbcproject.factory.CustomerFactory;
+
+import com.capgemini.jdbcproject.services.CustomerService;
+
+public class CustomerApp {
+while(true) {
+	
+}
+
+
+}

@@ -1,0 +1,14 @@
+package com.capgemini.forestryapp.dto;
+
+public class Land {
+public double land;
+
+public double getLand() {
+	return land;
+}
+
+public void setLand(double land) {
+	this.land = land;
+}
+
+}

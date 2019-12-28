@@ -1,0 +1,73 @@
+package com.capgemini.jdbcproject.controller;
+
+import java.awt.Container;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.forestryjdbcproject.factory.ContractorFactory;
+import com.capgemini.jdbcproject.bean.Contractor;
+import com.capgemini.jdbcproject.services.ContractorService;
+
+public class ContractorApp {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ContractorService service = ContractorFactory.intanceOfContractorService();
+		while(true) {
+			System.out.println("Enter 1 to get all Contractor Details...");
+			System.out.println("Enter 2 to add Contractor...");
+			System.out.println("Enter 3 to delete Contractor...");
+
+			int choice = sc.nextInt();
+			switch (choice) {
+			case 1:
+				List<Contractor> list = new ArrayList<Contractor>();
+				System.out.println(service.getAllContarctor());
+				break;
+			case 2:
+				Contractor contractor = new Contractor();
+				System.out.println("Enter Contractor number");
+				int contractorNo = sc.nextInt();
+				System.out.println("Enter Customer id");
+				int customerId = sc.nextInt();
+				System.out.println("Enter product id");
+				int productId = sc.nextInt();
+				System.out.println("Enter haulier id");
+				int haulierId = sc.nextInt();
+				System.out.println("Enter delivery date yyyy-mm-dd");
+				String deliveryDate = sc.next();
+				System.out.println("Enter delivery day");
+				String deliveryDay = sc.next();
+				System.out.println("Enter quantity");
+				String quantity = sc.next();
+				contractor.setContractorNo(contractorNo);
+				contractor.setCustomerId(customerId);
+				contractor.setProductId(productId);
+				contractor.setHaulierId(haulierId);
+				contractor.setDeliveryDate(deliveryDate);
+				contractor.setDeliveryDay(deliveryDay);
+				contractor.setQunatity(quantity);
+				service.addContarctor(contractor);
+				System.out.println("Added..");
+				break;
+			case 3:
+				System.out.println("Enter the customer number which you want to delete");
+				Contractor bean = new Contractor();
+				
+				int cid = sc.nextInt();
+				
+				boolean check = service.deletecontarctor(cid);
+				if(check) {
+					System.out.println("Deleted");
+				}
+				else {
+					System.err.println("Something went error");
+				}
+				break;
+			default:
+				break;
+			}
+		}
+	}
+}

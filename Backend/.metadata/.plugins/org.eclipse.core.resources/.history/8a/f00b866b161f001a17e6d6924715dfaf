@@ -1,0 +1,21 @@
+package com.capgemini.forestryjdbcproject.factory;
+
+import com.capgemini.jdbcproject.dao.ProductDAO;
+import com.capgemini.jdbcproject.dao.ProductDAOImpl;
+import com.capgemini.jdbcproject.services.ProductService;
+import com.capgemini.jdbcproject.services.ProductServiceImpl;
+
+public class ProductFactory {
+public ProductFactory() {
+	// TODO Auto-generated constructor stub
+}
+public static ProductDAO instanceOfProductDAOImpl() {
+	ProductDAO dao = new ProductDAOImpl();
+	return dao;
+}
+public static ProductService instanceOfProductServiceImpl() {
+	ProductService service = new ProductServiceImpl();
+	return service;
+	
+}
+}

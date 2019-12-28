@@ -1,0 +1,15 @@
+package com.capgemini.forestryjdbcproject.factory;
+
+import com.capgemini.jdbcproject.dao.ContractorDAO;
+import com.capgemini.jdbcproject.dao.ContractorDAOImpl;
+
+public class ContractorFactory {
+public ContractorFactory() {
+	// TODO Auto-generated constructor stub
+}
+
+public static ContractorDAO instanceOfContractorDAOImpl() {
+	ContractorDAO dao = new ContractorDAOImpl();
+	return dao;
+}
+}

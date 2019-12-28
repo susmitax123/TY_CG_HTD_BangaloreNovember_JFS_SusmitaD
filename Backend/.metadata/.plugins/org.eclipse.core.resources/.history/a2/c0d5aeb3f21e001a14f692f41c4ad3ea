@@ -1,0 +1,8 @@
+driverClass=com.mysql.jdbc.Driver
+dbUrl=jdbc:mysql://localhost:3306/forestrymanagementsystem
+dbUser=root
+dbPassword=root
+query=select*from contractor
+deleteQuery=delete from contractor where contractorno=?
+updateQuery=update users_info set email=? where userid=?
+insertQuery=insert into contractor values(?,?,?,?,?,?,?)

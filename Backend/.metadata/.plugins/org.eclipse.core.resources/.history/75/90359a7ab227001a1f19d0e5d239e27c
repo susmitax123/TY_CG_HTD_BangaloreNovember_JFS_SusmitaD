@@ -1,0 +1,101 @@
+
+package com.capgemini.forestryapp;
+
+import java.util.Scanner;
+
+import com.capgemini.forestryapp.dao.CustomerDAO;
+import com.capgemini.forestryapp.dto.CustomerBean;
+import com.capgemini.forestryapp.util.CustomerDAOManager;
+
+public class Customer {
+	
+
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	 CustomerDAO dao = CustomerDAOManager.getForestDAO();
+	 
+	while(true)
+	{
+		System.out.println("enter the choice");
+		
+		System.out.println("Press 1 to insert customer data");
+		System.out.println("Press 2 to delete customer data");
+		System.out.println("Press 3 to search customer data");
+		System.out.println("Press 4 to get all customer data");
+		 CustomerBean bean = new CustomerBean();
+		int choice = sc.nextInt();
+		switch (choice) {
+		case 1: System.out.println("Enter customer id");
+				int customerId = sc.nextInt();
+				System.out.println("Enter customer name");
+				String name = sc.next();
+				System.out.println("Enter mailer Id");
+				String mailerId = sc.next();
+				System.out.println("Enter contact number");
+				Double contactNumber = sc.nextDouble();
+				System.out.println("Enter Postal code");
+				int postaCode = sc.nextInt();
+				System.out.println("Enter town");
+				String town = sc.next();
+				System.out.println("Enter street address1...");
+				String streetAddress1 = sc.next();
+				System.out.println("Enter street address2...");
+				String streetAddress2 = sc.next();
+				
+				bean.setCustomerId(customerId);
+				bean.setCid(customerId);
+				bean.setEmail();
+				
+				System.out.println("data is added...");
+			break;
+		case 2:
+			
+			System.out.println("Enter customer id which you want to delete...");
+			bean.setCustomerId(sc.nextInt());
+			boolean check = dao.deleteCustomer(bean.getCustomerId());
+			
+			if(check) {
+				System.out.println("Deleted..");
+			}else {
+				System.err.println("Enter correct id");
+			       }
+		         	
+			break;
+		case 3:System.out.println("Enter id to search the customer");
+			int custId = sc.nextInt();
+			if(bean != null) {
+				System.out.println(bean.getContactNumber());
+				System.out.println(bean.getCustomerId());
+				System.out.println(bean.getPostalCode());
+				System.out.println(bean.getMailerId());
+				System.out.println(bean.getName());
+				System.out.println(bean.getTown());
+				System.out.println(bean.getStreetAddress1());
+				System.out.println(bean.getStreetAddress2());
+			}else {
+				System.err.println("Customer is not present");
+			}
+			break;
+		case 4:
+			
+			if(bean != null) {
+				System.out.println(bean.getContactNumber());
+				System.out.println(bean.getCustomerId());
+				System.out.println(bean.getPostalCode());
+				System.out.println(bean.getTown());
+				System.out.println(bean.getMailerId());
+				System.out.println(bean.getName());
+				System.out.println(bean.getStreetAddress1());
+				System.out.println(bean.getStreetAddress2());
+			}else {
+				System.err.println("No data is present.....");
+			}
+			break;
+		default:
+			System.out.println("Choose among the given number only....");
+			break;
+		}
+	}
+	}
+}
+

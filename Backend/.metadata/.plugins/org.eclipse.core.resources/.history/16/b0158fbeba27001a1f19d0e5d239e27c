@@ -1,0 +1,13 @@
+package com.capgemini.forestryapp.dao;
+
+import com.capgemini.forestryapp.dto.ProductBean;
+
+public class ProductDAOImpl implements IProductDAO {
+
+	@Override
+	public boolean insertProduct(ProductBean bean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

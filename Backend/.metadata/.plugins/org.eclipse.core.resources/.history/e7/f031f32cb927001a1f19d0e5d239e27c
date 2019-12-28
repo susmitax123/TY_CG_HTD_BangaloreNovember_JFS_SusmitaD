@@ -1,0 +1,38 @@
+package com.capgemini.forestryapp.dao;
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import com.capgemini.forestryapp.dto.ContractBean;
+import com.capgemini.forestryapp.dto.CustomerBean;
+
+public class ContractDAOImpl implements IContractDAO {
+	private List<ContractBean> list = new ArrayList<ContractBean>();
+
+	@Override
+	public boolean insertContract(ContractBean bean) {
+		for (ContractBean contractBean : list) {
+			if(contractBean.getCustomerId() == bean.getCustomerId()) {
+				return false;
+			}
+		}
+		list.add(bean);
+		return false;
+	}
+
+	@Override
+	public boolean deleteContract(int custmId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<ContractBean> getAllContractor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

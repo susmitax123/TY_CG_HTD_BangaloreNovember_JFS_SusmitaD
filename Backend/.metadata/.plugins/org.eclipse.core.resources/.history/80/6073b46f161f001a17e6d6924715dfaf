@@ -1,0 +1,38 @@
+package com.capgemini.jdbcproject.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.forestryjdbcproject.factory.CustomerFactory;
+import com.capgemini.jdbcproject.services.CustomerService;
+
+public class CustomerApp {
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	CustomerService service = CustomerFactory.instanceOfCustomerServiceImpl();
+	while(true) {
+		System.out.println("Enter 1 to get Customer details");
+		System.out.println("Enter 2 to add Customer");
+		System.out.println("Enter 3 to update Customer details");
+		System.out.println("Enter 4 to delete Customer");
+		
+		int choice = sc.nextInt();
+		
+		switch (choice) {
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		case 3:
+			
+			break;
+		case 4:
+			
+			break;
+		default:
+			break;
+		}
+	}
+}
+}

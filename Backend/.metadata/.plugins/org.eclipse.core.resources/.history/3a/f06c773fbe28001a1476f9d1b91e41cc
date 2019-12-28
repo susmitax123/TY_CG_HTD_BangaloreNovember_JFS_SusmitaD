@@ -1,0 +1,27 @@
+package com.capgemini.forestryapp.dao;
+
+import java.util.List;
+
+import com.capgemini.forestryapp.dto.LandBean;
+
+public class LandDAOImpl implements LandDAO{
+
+	@Override
+	public boolean addLand(LandBean landbean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeLand(LandBean land) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<LandBean> getAllLand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

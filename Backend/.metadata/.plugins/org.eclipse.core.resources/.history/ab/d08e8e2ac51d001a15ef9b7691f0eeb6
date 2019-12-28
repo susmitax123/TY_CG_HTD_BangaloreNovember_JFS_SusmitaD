@@ -1,0 +1,5 @@
+package com.capgemini.jdbcproject.services;
+
+public class ContractorServiceImpl {
+
+}

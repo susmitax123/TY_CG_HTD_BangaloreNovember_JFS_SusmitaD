@@ -1,0 +1,76 @@
+package com.capgemini.forestryapp;
+
+import java.util.Scanner;
+
+import com.capgemini.forestryapp.dao.IContractDAO;
+import com.capgemini.forestryapp.dto.ContractBean;
+import com.capgemini.forestryapp.dto.CustomerBean;
+import com.capgemini.forestryapp.util.ContractDAOManager;
+
+public class Contract{
+	public Contract() {
+	
+	
+		Scanner sc = new Scanner(System.in);
+		IContractDAO dao = ContractDAOManager.getContractDAO();
+		while(true)
+		{
+
+			System.out.println("enter the choice");
+
+			System.out.println("Press 1 to insert contract data");
+			System.out.println("Press 2 to delete contract data");
+			System.out.println("Press 3 to go back to admin");
+			int choice = sc.nextInt();
+			switch (choice) {
+			case 1:	
+				ContractBean bean = new ContractBean(); 
+				System.out.println("Enter contract number");
+				int contractNumber = sc.nextInt();
+				System.out.println("Enter contract id");
+				int customerId = sc.nextInt();
+				System.out.println("Enter product Id");
+				int productId = sc.nextInt();
+				System.out.println("Enter haulier id");
+				int haulierId = sc.nextInt();
+				System.out.println("Enter Delivery Date in dd-mm-yyyy");
+				String deliveryDate = sc.next();
+				System.out.println("Enter Delivery Day");
+				String deliveryDay = sc.next();
+				System.out.println("Enter quantity");
+				String quantity = sc.next();
+
+				bean.setCustomerId(customerId);
+				bean.setContractorNo(contractNumber);
+				bean.setProductId(productId);
+				bean.setHaulierId(haulierId);
+				bean.setDeliveryDate(deliveryDate);
+				bean.setDeliveryDay(deliveryDay);
+				bean.setQunatity(quantity);
+				dao.insertContract(bean);
+				System.out.println("data is added...");
+				break;
+			case 2:
+				ContractBean bean1 = new ContractBean();
+				System.out.println("Enter customer Id you want to delete...");
+				int custmId = sc.nextInt();
+				boolean check = dao.deleteContract(custmId);
+
+				if(check) {
+					System.out.println("Deleted..");
+				}else {
+					System.err.println("Enter correct id");
+				}
+
+				break;
+			case 3:
+				Admin admin = new Admin();
+				admin.login();
+			default:
+				System.out.println("Choose among the given number only....");
+				break;
+			}
+		}
+
+	}
+}

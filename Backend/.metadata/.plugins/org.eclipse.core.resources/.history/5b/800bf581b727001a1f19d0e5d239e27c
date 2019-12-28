@@ -1,0 +1,11 @@
+package com.capgemini.forestryapp.dao;
+
+import java.util.List;
+
+import com.capgemini.forestryapp.dto.ContractBean;
+
+public interface IContractDAO {
+boolean insertContract(ContractBean bean );
+boolean deleteContract(ContractBean bean );
+List<ContractBean> getAllContractor();
+}

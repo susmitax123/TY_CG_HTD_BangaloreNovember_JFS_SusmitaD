@@ -1,0 +1,12 @@
+package com.capgemini.forestryapp;
+
+import java.util.Scanner;
+
+public class Admin {
+	
+public static void main(String[] args) {
+	System.out.println("Enter UserId0");
+	Scanner sc = new Scanner(System.in);
+	String userId = sc.next();
+}
+}

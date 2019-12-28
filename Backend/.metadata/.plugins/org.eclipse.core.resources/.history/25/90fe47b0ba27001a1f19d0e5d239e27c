@@ -1,0 +1,8 @@
+package com.capgemini.forestryapp.dao;
+
+import com.capgemini.forestryapp.dto.ProductBean;
+
+public interface IProductDAO {
+boolean insertProduct(ProductBean bean);
+
+}

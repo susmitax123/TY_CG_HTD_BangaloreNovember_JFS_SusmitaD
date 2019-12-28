@@ -1,0 +1,28 @@
+package com.capgemini.jdbcproject.services;
+
+import java.util.List;
+
+import com.capgemini.jdbcproject.bean.Contractor;
+import com.capgemini.jdbcproject.dao.ContractorDAO;
+
+public class ContractorServiceImpl implements ContractorService {
+ ContractorDAO dao = 
+	@Override
+	public List<Contractor> getAllContarctor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean deletecontarctor(int cid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addContarctor(Contractor contractor) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

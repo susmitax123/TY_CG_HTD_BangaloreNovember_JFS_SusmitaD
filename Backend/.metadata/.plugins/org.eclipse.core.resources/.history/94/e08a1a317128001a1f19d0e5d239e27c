@@ -1,0 +1,5 @@
+package com.capgemini.forestryapp;
+
+public class Admin {
+System.out.println();
+}
